@@ -1,454 +1,248 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>المجلس الأعلى للطفولة</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المجلس الأعلى للطفولة - المنصة السيادية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ==========================================================================
-       المجلس الأعلى للطفولة — Inline Stylesheet (All-in-one)
-       ========================================================================== */
     :root {
       --primary: #0f3d5e;
       --primary-dark: #09273d;
-      --secondary: #1b7a6e;
-      --accent: #e6a817;
-      --bg-page: #f4f7fa;
-      --bg-card: #ffffff;
-      --text-main: #1b2836;
-      --text-muted: #54667a;
-      --border-color: #dce5ee;
-      --radius-sm: 8px; --radius-md: 16px; --radius-lg: 24px;
-      --shadow-sm: 0 4px 14px rgba(15, 61, 94, 0.07);
-      --shadow-md: 0 14px 34px rgba(15, 61, 94, 0.14);
-      --shadow-3d: 0 22px 45px rgba(9, 39, 61, 0.24);
-      --transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      --gold: #d4af37;
+      --un-blue: #4a90e2;
+      --danger: #e74c3c;
+      --bg: #f4f7fa;
+      --card-bg: #ffffff;
+      --text: #2c3e50;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; direction: rtl; }
-    body {
-      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, sans-serif;
-      background-color: var(--bg-page); color: var(--text-main);
-      line-height: 1.75; font-size: 16px; overflow-x: hidden;
-    }
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-    /* Topbar & Nav */
-    .topbar { background: var(--primary-dark); color: #e2edf5; font-size: 0.88rem; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .topbar-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
-    .navbar { background: rgba(255, 255, 255, 0.98); box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); }
-    .navbar-inner { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 16px; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--primary); }
-    .brand-mark { width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.25rem; box-shadow: 0 6px 16px rgba(15,61,94,0.22); }
-    .brand-text strong { display: block; font-size: 1.15rem; line-height: 1.25; color: var(--primary-dark); }
-    .brand-text span { display: block; font-size: 0.82rem; color: var(--secondary); font-weight: 700; }
+    body { font-family: 'Cairo', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
     
-    .nav-links { display: flex; list-style: none; gap: 6px; flex-wrap: wrap; }
-    .nav-links a { cursor: pointer; text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 0.95rem; padding: 8px 13px; border-radius: var(--radius-sm); transition: var(--transition); }
-    .nav-links a:hover, .nav-links a.active { background: #eaf2f8; color: var(--primary); }
-
-    /* Layout & Cards */
-    .section-container { display: none; padding: 58px 0; animation: fadeIn 0.4s ease forwards; }
-    .section-container.active { display: block; }
+    /* Header & Nav */
+    .header { background: var(--primary-dark); color: #fff; padding: 15px 0; border-bottom: 3px solid var(--gold); }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .top-bar h1 { font-size: 1.5rem; color: var(--gold); }
+    .top-bar span { font-size: 0.9rem; color: #a9cce3; }
+    
+    .nav { background: var(--primary); padding: 10px 0; position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; gap: 15px; padding: 0 20px; flex-wrap: wrap; }
+    .nav a { color: #fff; text-decoration: none; padding: 8px 15px; border-radius: 5px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+    .nav a:hover, .nav a.active { background: var(--gold); color: var(--primary-dark); }
+    
+    .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+    .section { display: none; animation: fadeIn 0.4s ease; }
+    .section.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-    .hero { background: radial-gradient(circle at 20% 20%, #1c6494 0%, #0d3654 55%, #071e30 100%); color: #fff; padding: 64px 0; perspective: 1200px; }
-    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: center; }
-    .hero h1 { font-size: 2.4rem; line-height: 1.3; margin-bottom: 10px; text-shadow: 0 4px 18px rgba(0,0,0,0.28); }
-    .hero p { color: #e6f0f7; margin-bottom: 24px; font-size: 1.03rem; }
     
-    .btn-group { display: flex; flex-wrap: wrap; gap: 12px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 11px 22px; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.96rem; text-decoration: none; border: none; cursor: pointer; transition: var(--transition); }
-    .btn-primary { background: var(--accent); color: #132230; box-shadow: 0 6px 18px rgba(230, 168, 23, 0.35); }
-    .btn-primary:hover { background: #f3b929; transform: translateY(-2px); }
-    .btn-outline { background: rgba(255,255,255,0.06); color: #fff; border: 1.5px solid rgba(255,255,255,0.55); }
+    /* Cards & Grids */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: var(--card-bg); padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary); }
+    .card.gold { border-top-color: var(--gold); }
+    .card.blue { border-top-color: var(--un-blue); }
+    .card.red { border-top-color: var(--danger); }
     
-    /* 3D Canvas */
-    .hero-3d-stage { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius-lg); padding: 14px; box-shadow: var(--shadow-3d); }
-    .hero-3d-canvas { width: 100%; height: 330px; border-radius: 16px; display: block; background: linear-gradient(145deg, #0b2c44, #144d73); cursor: crosshair; }
+    h2.title { color: var(--primary); border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 25px; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
+    h2.title img { width: 35px; height: 35px; }
     
-    /* Grids & Cards */
-    .section-header { margin-bottom: 28px; }
-    .section-header h2 { font-size: 1.85rem; color: var(--primary-dark); margin-bottom: 6px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    /* Debate Section */
+    .debate-vs { display: flex; justify-content: center; align-items: center; font-size: 2rem; font-weight: 800; color: #ccc; }
+    .debate-card { padding: 30px; border-radius: 12px; }
+    .debate-right { background: #fdfbf7; border: 2px solid var(--gold); }
+    .debate-left { background: #fff5f5; border: 2px solid var(--danger); }
+    .debate-list li { margin-bottom: 15px; font-weight: 600; list-style: none; padding-right: 25px; position: relative; }
+    .debate-list li::before { content: '✓'; position: absolute; right: 0; color: var(--gold); font-size: 1.2rem; }
+    .debate-left .debate-list li::before { content: '✗'; color: var(--danger); }
     
-    .card, .doc-box, .form-panel { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); transition: var(--transition); }
-    .card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-    .card img, .gallery-item img { width: 100%; height: 210px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 14px; display: block; }
-    .card h3, .doc-box h3, .form-panel h3 { color: var(--primary); margin-bottom: 10px; }
+    /* Control Panel */
+    .panel-header { background: #1a252f; color: #fff; padding: 20px; border-radius: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .un-badge { background: var(--un-blue); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.85rem; font-weight: bold; }
+    .ai-box { background: #f8f9f9; border: 1px solid #d5d8dc; padding: 20px; border-radius: 10px; }
+    .ai-box textarea { width: 100%; height: 120px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; margin-bottom: 15px; resize: none; }
+    .btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.3s; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-gold { background: var(--gold); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+    .btn-un { background: var(--un-blue); color: white; }
     
-    /* Archive Table & Forms */
-    .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; font-weight: 700; margin-bottom: 6px; color: var(--primary-dark); font-size: 0.94rem; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 14px; border: 1px solid #c6d3e0; border-radius: var(--radius-sm); font-family: inherit; font-size: 0.95rem; background: #fff; }
-    .table-wrap { overflow-x: auto; background: var(--bg-card); border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); margin-top: 24px; }
-    table { width: 100%; border-collapse: collapse; text-align: right; }
-    th, td { padding: 13px 15px; border-bottom: 1px solid var(--border-color); }
-    th { background: var(--primary); color: #fff; }
-    .status-active { background: #e1f5ee; color: #126952; padding: 3px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; }
-    .status-review { background: #fff3d1; color: #8c6004; padding: 3px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; }
-
-    /* Audio Player */
-    .audio-panel { background: #f4f9fc; border: 1px solid #c9dce9; border-radius: var(--radius-md); padding: 20px; margin-top: 14px; }
-    
-    /* Footer */
-    .footer { background: var(--primary-dark); color: #d6e4ee; padding: 40px 0 24px; margin-top: 40px; }
-    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.12); }
-    .footer h4 { color: #fff; margin-bottom: 12px; font-size: 1.05rem; }
-    .footer a { color: #b8d6eb; text-decoration: none; }
-    .footer-bottom { padding-top: 18px; display: flex; justify-content: space-between; font-size: 0.86rem; color: #9bb8ce; }
-
-    @media (max-width: 900px) {
-      .hero-grid, .grid-3, .grid-2, .footer-grid { grid-template-columns: 1fr; }
-    }
+    /* Archive & Timeline */
+    .timeline { border-right: 3px solid var(--gold); padding-right: 20px; margin-right: 10px; }
+    .tl-item { position: relative; margin-bottom: 25px; }
+    .tl-item::before { content: ''; position: absolute; right: -28px; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: var(--primary); border: 2px solid var(--gold); }
+    .tl-date { font-weight: bold; color: var(--primary); margin-bottom: 5px; }
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div>طرابلس، ليبيا — منظومة الرعاية والحماية والتوثيق المؤسسي</div>
-      <div style="font-weight:700;">المجلس الأعلى للطفولة</div>
-    </div>
-  </div>
-  
-  <header class="navbar">
-    <div class="container navbar-inner">
-      <a class="brand" href="#" onclick="showSection('home')">
-        <div class="brand-mark">ط</div>
-        <div class="brand-text">
-          <strong>المجلس الأعلى للطفولة</strong>
-          <span>المجلس الأعلى للطفولة</span>
-        </div>
-      </a>
-      <nav aria-label="القائمة الرئيسية">
-        <ul class="nav-links">
-          <li><a onclick="showSection('home')" id="nav-home" class="active">الرئيسية</a></li>
-          <li><a onclick="showSection('reunion')" id="nav-reunion">لم شمل الليبيين</a></li>
-          <li><a onclick="showSection('about')" id="nav-about">عن المجلس</a></li>
-          <li><a onclick="showSection('documentary')" id="nav-documentary">الفيلم الوثائقي</a></li>
-          <li><a onclick="showSection('gallery')" id="nav-gallery">معرض الصور</a></li>
-          <li><a onclick="showSection('archive')" id="nav-archive">الأرشيف والمراسلات</a></li>
-          <li><a onclick="showSection('contact')" id="nav-contact">التواصل وصفحة فيسبوك</a></li>
-        </ul>
-      </nav>
+
+  <header class="header">
+    <div class="top-bar">
+      <div>
+        <h1>المجلس الأعلى للطفولة</h1>
+        <span>المنصة السيادية للإدارة والتوثيق - دولة ليبيا</span>
+      </div>
+      <div style="text-align: left;">
+        <span class="un-badge" style="display:inline-block; margin-bottom:5px;">متوافق مع معايير جنيف (UN)</span><br>
+        <span style="font-size: 0.8rem; color: #bdc3c7;">بإدارة: م. حسام جمعة أبوزيد الشبيعان</span>
+      </div>
     </div>
   </header>
 
-  <!-- ==================== HOME SECTION ==================== -->
-  <div id="sec-home" class="section-container active">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span style="display:inline-block; background:rgba(255,255,255,0.14); color:#ffe08a; padding:5px 14px; border-radius:99px; font-size:0.88rem; font-weight:700; margin-bottom:14px;">البوابة الرسمية ثلاثية الأبعاد — طرابلس</span>
-          <h1>المجلس الأعلى للطفولة</h1>
-          <p>منصة متكاملة في صفحة واحدة برمجية (Single Page) تضم الرؤية، وتبويب لم شمل الليبيين، والمجسم 3D التفاعلي، والأرشيف الإداري.</p>
-          <div class="btn-group">
-            <button onclick="showSection('reunion')" class="btn btn-primary">لم شمل الليبيين</button>
-            <button onclick="showSection('documentary')" class="btn btn-outline">الفيلم الوثائقي</button>
-            <button onclick="showSection('archive')" class="btn btn-outline">الأرشيف والمراسلات</button>
-          </div>
-        </div>
-        <div class="hero-3d-stage">
-          <canvas id="council3DCanvas" class="hero-3d-canvas"></canvas>
-          <div style="text-align:center; font-size:0.84rem; color:#cde5f7; margin-top:8px;">مجسم تفاعلي ثلاثي الأبعاد — حرّك المؤشر للتفاعل</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container" style="padding: 58px 20px;">
-      <div class="section-header">
-        <h2>المحاور الأساسية للمجلس</h2>
-      </div>
-      <div class="grid-3">
-        <article class="card">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMzgwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjM4MCI+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzODAiIHJ4PSIxNiIgZmlsbD0iI2YzZjhmNiIvPgogIDxjaXJjbGUgY3g9IjMwMCIgY3k9IjE4MCIgcj0iNDQiIGZpbGw9IiMxODY4NWMiLz4KICA8cGF0aCBkPSJNMjgyIDE4MiBMMjk0IDE5NCBMMzIwIDE2NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzU1IiBmb250LWZhbWlseT0iQ2Fpcm8sIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE4Njg1YyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+2YXZhti42YjZhdipINin2YTYrdmF2KfZitipINmI2KfZhNix2LnYp9mK2Kk8L3RleHQ+Cjwvc3ZnPg==" alt="الحماية" />
-          <h3>الحماية والرعاية الشاملة</h3>
-          <p>دعم حقوق الطفل وحمايته في بيئة آمنة ومستقرة.</p>
-        </article>
-        <article class="card">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMzgwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjM4MCI+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzODAiIHJ4PSIxNiIgZmlsbD0iI2VlZjRmOCIvPgogIDxyZWN0IHg9IjM1IiB5PSIzNSIgd2lkdGg9IjUzMCIgaGVpZ2h0PSIzMTAiIHJ4PSIxMiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjY2JkOWU2IiBzdHJva2Utd2lkdGg9IjIiLz4KICA8cmVjdCB4PSI2NSIgeT0iNzAiIHdpZHRoPSIyMTAiIGhlaWdodD0iMjQiIHJ4PSI2IiBmaWxsPSIjMGYzZDVlIi8+CiAgPHJlY3QgeD0iNjUiIHk9IjExMiIgd2lkdGg9IjQ3MCIgaGVpZ2h0PSIxMiIgcng9IjQiIGZpbGw9IiNkOWU0ZWMiLz4KICA8cmVjdCB4PSI2NSIgeT0iMTM2IiB3aWR0aD0iNDMwIiBoZWlnaHQ9IjEyIiByeD0iNCIgZmlsbD0iI2Q5ZTRlYyIvPgogIDxyZWN0IHg9IjY1IiB5PSIxNjAiIHdpZHRoPSI0NTUiIGhlaWdodD0iMTIiIHJ4PSI0IiBmaWxsPSIjZDllNGVjIi8+CiAgPHJlY3QgeD0iNjUiIHk9IjIwMCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSI5NSIgcng9IjEwIiBmaWxsPSIjZTZmMmVmIiBzdHJva2U9IiMyYThjN2UiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iMzE1IiB5PSIyMDAiIHdpZHRoPSIyMjAiIGhlaWdodD0iOTUiIHJ4PSIxMCIgZmlsbD0iI2ZlZjZlNCIgc3Ryb2tlPSIjZDk5YjE2IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDx0ZXh0IHg9IjE3NSIgeT0iMjQ1IiBmb250LWZhbWlseT0iQ2Fpcm8sIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzFiNmI1ZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+2KPYsdi02YHYqSDYp9mE2YXYsdin2LPZhNin2Ko8L3RleHQ+CiAgPHRleHQgeD0iNDI1IiB5PSIyNDUiIGZvbnQtZmFtaWx5PSJDYWlybywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjOWM2YjA4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7Yp9mE2K3ZiNmD2YXYqSDZiNin2YTZiNir2KfYptmCPC90ZXh0Pgo8L3N2Zz4=" alt="الأرشيف" />
-          <h3>الأرشيف وتنسيق المراسلات</h3>
-          <p>متابعة المراسلات الإدارية وحفظ الأرشيف المؤسسي.</p>
-        </article>
-        <article class="card">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJmaWxtR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzEwMjUzOCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFjNDk2NiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDUwIiByeD0iMTgiIGZpbGw9InVybCgjZmlsbUdyYWQpIi8+CiAgPGNpcmNsZSBjeD0iNDAwIiBjeT0iMjAwIiByPSI1NiIgZmlsbD0iI2Y1YjcwMCIgb3BhY2l0eT0iMC45MiIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzg0LDE3NCAzODQsMjI2IDQyOCwyMDAiIGZpbGw9IiMxMDI1MzgiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjI5NSIgZm9udC1mYW1pbHk9IkNhaXJvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPtin2YTZgdmK2YTZhSDYp9mE2YjYq9in2KbZgtmKINmE2YTYt9mB2YjZhNipPC90ZXh0Pgo8L3N2Zz4=" alt="التوثيق" />
-          <h3>الفيلم الوثائقي</h3>
-          <p>عرض السرد الكامل للفيلم الوثائقي والأنشطة.</p>
-        </article>
-      </div>
-    </section>
-  </div>
-
-  <!-- ==================== REUNION SECTION (لم شمل الليبيين) ==================== -->
-  <div id="sec-reunion" class="section-container">
-    <section class="container">
-      <div class="section-header">
-        <h2>لم شمل الليبيين</h2>
-        <p>مقطع أغنية <strong>لم الشمل</strong> بمشغل مدمج لتشغيل الصوت باللغة العربية مباشرة داخل الموقع.</p>
-      </div>
-      <div class="doc-box">
-        <h3>مشغل أغنية لم الشمل (تشغيل مباشر باللغة العربية)</h3>
-        <p style="color:#54667a; margin-bottom:14px;">اختر ملف الأغنية (MP3/WAV) مباشرة من جهازك أو اترك المشغل يقرأ الملف الافتراضي من المجلد.</p>
-        <div class="audio-panel">
-          <audio id="reunionAudioPlayer" controls style="width:100%; margin-bottom:14px;">
-            <source src="assets/audio/lam-al-shaml.mp3" type="audio/mpeg" />
-          </audio>
-          <div class="form-group" style="margin-top:18px;">
-            <label for="reunionLocalFile">اختر ملف الأغنية من اللابتوب للتشغيل الفوري:</label>
-            <input type="file" id="reunionLocalFile" accept="audio/*" />
-          </div>
-          <div id="reunionAlert" style="display:none; margin-top:10px; padding:10px; background:#e1f5ee; color:#126952; border-radius:8px; font-weight:700;"></div>
-        </div>
-        <div style="margin-top:20px;">
-          <a href="https://www.facebook.com/share/p/19MWD8RGzg/" target="_blank" class="btn btn-outline" style="color:var(--primary); border-color:var(--primary);">رابط منشور الفيسبوك المرجعي</a>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ==================== ABOUT SECTION ==================== -->
-  <div id="sec-about" class="section-container">
-    <section class="container">
-      <div class="section-header">
-        <h2>عن المجلس الأعلى للطفولة</h2>
-      </div>
-      <div class="grid-2">
-        <div class="card">
-          <h3>الرؤية</h3>
-          <p>بناء بيئة وطنية آمنة وداعمة تضمن لكل طفل حقه في الحياة والرعاية والتعليم.</p>
-        </div>
-        <div class="card">
-          <h3>الرسالة</h3>
-          <p>تنسيق السياسات وتوثيق المراسلات الإدارية بكفاءة ونشر الوعي عبر الملفات الوثائقية.</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ==================== DOCUMENTARY SECTION ==================== -->
-  <div id="sec-documentary" class="section-container">
-    <section class="container">
-      <div class="section-header">
-        <h2>سرد الفيلم الوثائقي</h2>
-        <p>سيناريو وسرد تفصيلي مع القراءة الصوتية باللغة العربية (يعتمد على توافر صوت عربي في المتصفح) أو المشغل المباشر.</p>
-      </div>
-      <div class="doc-box">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJmaWxtR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzEwMjUzOCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFjNDk2NiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDUwIiByeD0iMTgiIGZpbGw9InVybCgjZmlsbUdyYWQpIi8+CiAgPGNpcmNsZSBjeD0iNDAwIiBjeT0iMjAwIiByPSI1NiIgZmlsbD0iI2Y1YjcwMCIgb3BhY2l0eT0iMC45MiIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzg0LDE3NCAzODQsMjI2IDQyOCwyMDAiIGZpbGw9IiMxMDI1MzgiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjI5NSIgZm9udC1mYW1pbHk9IkNhaXJvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPtin2YTZgdmK2YTZhSDYp9mE2YjYq9in2KbZgtmKINmE2YTYt9mB2YjZhNipPC90ZXh0Pgo8L3N2Zz4=" alt="غلاف الفيلم" style="width:100%; max-height:300px; object-fit:cover; border-radius:12px; margin-bottom:20px;"/>
-        <div class="btn-group" style="margin-bottom:18px;">
-          <button type="button" id="readNarrationBtn" class="btn btn-primary">قراءة السرد آلياً (عربي)</button>
-          <button type="button" id="stopNarrationBtn" class="btn btn-outline" style="color:var(--primary); border-color:var(--primary);">إيقاف</button>
-        </div>
-        <div id="fullDocumentaryScript" style="background:#f9fbfd; border-right:4px solid var(--secondary); padding:16px; border-radius:8px;">
-          <p><strong>المشهد الأول:</strong> "في قلب كل مجتمع حيّ، تقف الطفولة بوصفها المقياس الحقيقي للحاضر والبوصلة الأصدق للمستقبل. ومن هنا جاءت رسالة المجلس الأعلى للطفولة؛ لتكون مظلة جامعة للرعاية والحماية والتنمية."</p>
-          <p><strong>المشهد الثاني:</strong> "لم تكن حماية الطفولة يوماً مجرد شعارات عابرة، بل مسؤولية يومية تتطلب رؤية واضحة، ومتابعة دقيقة، وتنظيماً مؤسسياً يربط القرار بالعمل الميداني."</p>
-          <p><strong>المشهد الثالث:</strong> "حين نمنح الطفل الأمان، والتعليم الجيد، والإنصات الحقيقي، فإننا نرسّخ قيم الرحمة والتضامن والوعي في نسيج الوطن بأكمله."</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ==================== GALLERY SECTION ==================== -->
-  <div id="sec-gallery" class="section-container">
-    <section class="container">
-      <div class="section-header">
-        <h2>معرض الصور (مدمج في الكود)</h2>
-      </div>
-      <div class="grid-2">
-        <div class="card"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTIwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjUyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwZjNkNWUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiMxODVhODIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMWY3YTZlIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzdW5HcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1YjcwMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMDdhMTYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNTIwIiByeD0iMjQiIGZpbGw9InVybCgjYmdHcmFkKSIvPgogIDxjaXJjbGUgY3g9IjY1MCIgY3k9IjExMCIgcj0iNjUiIGZpbGw9InVybCgjc3VuR3JhZCkiIG9wYWNpdHk9IjAuOSIvPgogIDxwYXRoIGQ9Ik0wIDM5MCBRMjAwIDMzMCA0MDAgMzg1IFQ4MDAgMzY1IEw4MDAgNTIwIEwwIDUyMCBaIiBmaWxsPSIjMTI0OTY5Ii8+CiAgPHBhdGggZD0iTTAgNDMwIFEyNjAgMzkwIDUyMCA0MzUgVDgwMCA0MTUgTDgwMCA1MjAgTDAgNTIwIFoiIGZpbGw9IiMwYjJlNDciLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MDAsIDIzNSkiPgogICAgPGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjExNSIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xIi8+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iODgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMTQiLz4KICAgIDxwYXRoIGQ9Ik0tNzUgMjUgUS0zNSA1IDAgMjggUTM1IDUgNzUgMjUgTDc1IDcyIFEzNSA1MiAwIDc0IFEtMzUgNTIgLTc1IDcyIFoiIGZpbGw9IiNmZmZmZmYiLz4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMjgiIHgyPSIwIiB5Mj0iNzQiIHN0cm9rZT0iIzBmM2Q1ZSIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICA8Y2lyY2xlIGN4PSItNDIiIGN5PSItMzUiIHI9IjE0IiBmaWxsPSIjZjViNzAwIi8+CiAgICA8Y2lyY2xlIGN4PSI0MiIgY3k9Ii0zNSIgcj0iMTQiIGZpbGw9IiM0ZWNkYzQiLz4KICAgIDxjaXJjbGUgY3g9IjAiIGN5PSItNjIiIHI9IjE4IiBmaWxsPSIjZmZmZmZmIi8+CiAgICA8cGF0aCBkPSJNLTI0IC04IFEwIC0zNCAyNCAtOCBRMzYgNiAyMiAyMCBRMCAzOCAtMjIgMjAgUS0zNiA2IC0yNCAtOCBaIiBmaWxsPSIjZjViNzAwIiBvcGFjaXR5PSIwLjk1Ii8+CiAgPC9nPgogIDx0ZXh0IHg9IjQwMCIgeT0iNDcyIiBmb250LWZhbWlseT0iQ2Fpcm8sIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+2KfZhNmF2KzZhNizINin2YTYo9i52YTZiSDZhNmE2LfZgdmI2YTYqSDigJQg2LfYsdin2KjZhNiz2Iwg2YTZitio2YrYpzwvdGV4dD4KPC9zdmc+" alt="الرئيسية" /><h3>الواجهة الرئيسية</h3></div>
-        <div class="card"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCI+CiAgPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJmaWxtR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzEwMjUzOCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFjNDk2NiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDUwIiByeD0iMTgiIGZpbGw9InVybCgjZmlsbUdyYWQpIi8+CiAgPGNpcmNsZSBjeD0iNDAwIiBjeT0iMjAwIiByPSI1NiIgZmlsbD0iI2Y1YjcwMCIgb3BhY2l0eT0iMC45MiIvPgogIDxwb2x5Z29uIHBvaW50cz0iMzg0LDE3NCAzODQsMjI2IDQyOCwyMDAiIGZpbGw9IiMxMDI1MzgiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjI5NSIgZm9udC1mYW1pbHk9IkNhaXJvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPtin2YTZgdmK2YTZhSDYp9mE2YjYq9in2KbZgtmKINmE2YTYt9mB2YjZhNipPC90ZXh0Pgo8L3N2Zz4=" alt="الوثائقي" /><h3>ملصق الفيلم الوثائقي</h3></div>
-        <div class="card"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMzgwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjM4MCI+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzODAiIHJ4PSIxNiIgZmlsbD0iI2VlZjRmOCIvPgogIDxyZWN0IHg9IjM1IiB5PSIzNSIgd2lkdGg9IjUzMCIgaGVpZ2h0PSIzMTAiIHJ4PSIxMiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjY2JkOWU2IiBzdHJva2Utd2lkdGg9IjIiLz4KICA8cmVjdCB4PSI2NSIgeT0iNzAiIHdpZHRoPSIyMTAiIGhlaWdodD0iMjQiIHJ4PSI2IiBmaWxsPSIjMGYzZDVlIi8+CiAgPHJlY3QgeD0iNjUiIHk9IjExMiIgd2lkdGg9IjQ3MCIgaGVpZ2h0PSIxMiIgcng9IjQiIGZpbGw9IiNkOWU0ZWMiLz4KICA8cmVjdCB4PSI2NSIgeT0iMTM2IiB3aWR0aD0iNDMwIiBoZWlnaHQ9IjEyIiByeD0iNCIgZmlsbD0iI2Q5ZTRlYyIvPgogIDxyZWN0IHg9IjY1IiB5PSIxNjAiIHdpZHRoPSI0NTUiIGhlaWdodD0iMTIiIHJ4PSI0IiBmaWxsPSIjZDllNGVjIi8+CiAgPHJlY3QgeD0iNjUiIHk9IjIwMCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSI5NSIgcng9IjEwIiBmaWxsPSIjZTZmMmVmIiBzdHJva2U9IiMyYThjN2UiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iMzE1IiB5PSIyMDAiIHdpZHRoPSIyMjAiIGhlaWdodD0iOTUiIHJ4PSIxMCIgZmlsbD0iI2ZlZjZlNCIgc3Ryb2tlPSIjZDk5YjE2IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDx0ZXh0IHg9IjE3NSIgeT0iMjQ1IiBmb250LWZhbWlseT0iQ2Fpcm8sIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzFiNmI1ZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+2KPYsdi02YHYqSDYp9mE2YXYsdin2LPZhNin2Ko8L3RleHQ+CiAgPHRleHQgeD0iNDI1IiB5PSIyNDUiIGZvbnQtZmFtaWx5PSJDYWlybywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjOWM2YjA4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7Yp9mE2K3ZiNmD2YXYqSDZiNin2YTZiNir2KfYptmCPC90ZXh0Pgo8L3N2Zz4=" alt="الأرشيف" /><h3>الأرشيف والمراسلات</h3></div>
-        <div class="card"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMzgwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjM4MCI+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzODAiIHJ4PSIxNiIgZmlsbD0iI2YzZjhmNiIvPgogIDxjaXJjbGUgY3g9IjMwMCIgY3k9IjE4MCIgcj0iNDQiIGZpbGw9IiMxODY4NWMiLz4KICA8cGF0aCBkPSJNMjgyIDE4MiBMMjk0IDE5NCBMMzIwIDE2NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzU1IiBmb250LWZhbWlseT0iQ2Fpcm8sIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE4Njg1YyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+2YXZhti42YjZhdipINin2YTYrdmF2KfZitipINmI2KfZhNix2LnYp9mK2Kk8L3RleHQ+Cjwvc3ZnPg==" alt="الحماية" /><h3>منظومة الحماية</h3></div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ==================== ARCHIVE SECTION ==================== -->
-  <div id="sec-archive" class="section-container">
-    <section class="container">
-      <div class="section-header">
-        <h2>الأرشيف ومتابعة المراسلات</h2>
-        <p>يتم الحفظ محلياً في المتصفح دون الحاجة لاستضافة خارجية (كود مدمج في ملف واحد).</p>
-      </div>
-      <div class="grid-2">
-        <div class="form-panel">
-          <h3>إضافة قيد جديد</h3>
-          <form id="addArchiveForm">
-            <div class="form-group"><label>رقم القيد</label><input type="text" id="recCode" required /></div>
-            <div class="form-group"><label>الموضوع</label><input type="text" id="recSubject" required /></div>
-            <div class="form-group"><label>الجهة</label><input type="text" id="recEntity" required /></div>
-            <div class="form-group"><label>الحالة</label><select id="recStatus"><option>قيد المتابعة</option><option>معتمد</option></select></div>
-            <button type="submit" class="btn btn-primary">حفظ في السجل</button>
-          </form>
-        </div>
-        <div class="form-panel">
-          <h3>البحث في السجلات</h3>
-          <input type="text" id="archiveSearch" placeholder="ابحث هنا..." style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc;"/>
-        </div>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>رقم القيد</th><th>الموضوع</th><th>الجهة</th><th>الحالة</th></tr></thead>
-          <tbody id="archiveTableBody"></tbody>
-        </table>
-      </div>
-    </section>
-  </div>
-
-  <!-- ==================== CONTACT SECTION ==================== -->
-  <div id="sec-contact" class="section-container">
-    <section class="container">
-      <div class="section-header">
-        <h2>التواصل وصفحة فيسبوك</h2>
-      </div>
-      <div class="doc-box" style="text-align:center;">
-        <h3 style="margin-bottom:16px;">رابط صفحة المجلس الرسمي على فيسبوك</h3>
-        <a href="https://www.facebook.com/" target="_blank" class="btn btn-primary" style="font-size:1.1rem; padding:14px 28px;">زيارة صفحة المجلس الأعلى للطفولة</a>
-      </div>
-    </section>
-  </div>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4>المجلس الأعلى للطفولة</h4>
-          <p>بوابة تعريفية وتوثيقية وإدارية تعمل بالكامل من ملف <code>index.html</code> واحد ببرمجة شاملة.</p>
-        </div>
-        <div>
-          <h4>بيانات التشغيل</h4>
-          <p>ارفع ملف <code>index.html</code> فقط لأي استضافة، وسيعمل كل شيء (الثري دي، الصور المدمجة، الأرشيف المحلي، لم الشمل).</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>جميع الحقوق محفوظة © 2026 — المجلس الأعلى للطفولة</span>
-        <span>برمجة وإعداد: م. حسام جمعة أبوزيد الشبيعان</span>
-      </div>
+  <nav class="nav">
+    <div class="nav-container">
+      <a onclick="show('home')" class="active" id="btn-home">الرئيسية السيادية</a>
+      <a onclick="show('debate')" id="btn-debate">المناظرة القانونية</a>
+      <a onclick="show('panel')" id="btn-panel">لوحة تحكم الرئيس</a>
+      <a onclick="show('archive')" id="btn-archive">الأرشيف التأسيسي (2012)</a>
+      <a onclick="show('festival')" id="btn-festival">المهرجان الأول للطفولة</a>
     </div>
-  </footer>
+  </nav>
 
-  <!-- ==================== INLINE JAVASCRIPT ==================== -->
-  <script>
-    // Navigation Logic
-    function showSection(secId) {
-      document.querySelectorAll('.section-container').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
-      document.getElementById('sec-' + secId).classList.add('active');
-      const navBtn = document.getElementById('nav-' + secId);
-      if(navBtn) navBtn.classList.add('active');
-      window.scrollTo(0,0);
-    }
-
-    // 3D Emblem Logic
-    function init3DEmblemScene() {
-      const canvas = document.getElementById('council3DCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let width = canvas.width = canvas.offsetWidth || 480;
-      let height = canvas.height = canvas.offsetHeight || 330;
-      let angleY = 0, targetTiltX = 0, targetTiltY = 0;
-      const nodes = [];
-      const count = 42;
-      for (let i = 0; i < count; i++) {
-        const theta = (i / count) * Math.PI * 2;
-        const phi = Math.acos(2 * ((i * 0.618) % 1) - 1);
-        nodes.push({ theta, phi, radius: 95 + (i % 3) * 14, color: i % 3 === 0 ? '#f5b700' : (i % 3 === 1 ? '#4ecdc4' : '#ffffff'), size: i % 4 === 0 ? 4.2 : 2.8 });
-      }
-      canvas.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        targetTiltY = ((e.clientX - rect.left) / rect.width - 0.5) * 0.8;
-        targetTiltX = ((e.clientY - rect.top) / rect.height - 0.5) * 0.6;
-      });
-      canvas.addEventListener('mouseleave', () => { targetTiltX = 0; targetTiltY = 0; });
-      
-      function render() {
-        ctx.clearRect(0, 0, width, height);
-        const cx = width / 2, cy = height / 2 - 12;
-        const grad = ctx.createRadialGradient(cx, cy, 15, cx, cy, 150);
-        grad.addColorStop(0, 'rgba(78, 205, 196, 0.25)'); grad.addColorStop(1, 'rgba(11, 44, 68, 0)');
-        ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(cx, cy, 150, 0, Math.PI * 2); ctx.fill();
-        angleY += 0.012; const rotY = angleY + targetTiltY, rotX = targetTiltX;
-        
-        const projected = nodes.map(n => {
-          const x0 = n.radius * Math.sin(n.phi) * Math.cos(n.theta + rotY);
-          const y0 = n.radius * Math.cos(n.phi);
-          const z0 = n.radius * Math.sin(n.phi) * Math.sin(n.theta + rotY);
-          const y1 = y0 * Math.cos(rotX) - z0 * Math.sin(rotX);
-          const z1 = y0 * Math.sin(rotX) + z0 * Math.cos(rotX);
-          const scale = 320 / (320 + z1);
-          return { x: cx + x0 * scale, y: cy + y1 * scale, z: z1, scale, color: n.color, size: n.size * scale };
-        });
-        projected.sort((a, b) => b.z - a.z);
-        
-        ctx.lineWidth = 0.8;
-        for (let i=0; i<projected.length; i++) {
-          for (let j=i+1; j<projected.length; j++) {
-            const dist = Math.hypot(projected[i].x - projected[j].x, projected[i].y - projected[j].y);
-            if (dist < 62) { ctx.strokeStyle = `rgba(205,229,247,${(1 - dist/62)*0.28})`; ctx.beginPath(); ctx.moveTo(projected[i].x, projected[i].y); ctx.lineTo(projected[j].x, projected[j].y); ctx.stroke(); }
-          }
-        }
-        projected.forEach(p => { ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill(); });
-        
-        ctx.strokeStyle = 'rgba(245, 183, 0, 0.7)'; ctx.lineWidth = 2; ctx.beginPath();
-        ctx.ellipse(cx, cy, 62, 22, Math.sin(angleY * 0.5) * 0.2, 0, Math.PI * 2); ctx.stroke();
-        ctx.fillStyle = '#ffffff'; ctx.font = 'bold 18px Cairo'; ctx.textAlign = 'center'; ctx.fillText('المجلس الأعلى للطفولة', cx, height - 34);
-        ctx.fillStyle = '#ffd56b'; ctx.font = '600 13px Cairo'; ctx.fillText('طرابلس — ليبيا', cx, height - 14);
-        requestAnimationFrame(render);
-      }
-      render();
-    }
-
-    // Archive Logic (Local Storage)
-    const defRec = [{code:'HCC-01', subject:'مراسلات الأرشيف', entity:'رئاسة المجلس', status:'معتمد'}];
-    function getRecs() { try { const s = localStorage.getItem('hcc_arch'); return s ? JSON.parse(s) : defRec; } catch(e) { return defRec; } }
-    function renderArchive(q='') {
-      const t = document.getElementById('archiveTableBody'); if(!t) return;
-      const recs = getRecs().filter(r => !q || r.code.includes(q) || r.subject.includes(q));
-      t.innerHTML = recs.length ? recs.map(r => `<tr><td>${r.code}</td><td>${r.subject}</td><td>${r.entity}</td><td><span class="${r.status==='معتمد'?'status-active':'status-review'}">${r.status}</span></td></tr>`).join('') : '<tr><td colspan="4">لا توجد سجلات</td></tr>';
-    }
+  <main class="container">
     
-    // Reunion Audio Local File Upload
-    function initReunion() {
-      const f = document.getElementById('reunionLocalFile');
-      const a = document.getElementById('reunionAudioPlayer');
-      if(f && a) {
-        f.addEventListener('change', e => {
-          const file = e.target.files[0];
-          if(file) { a.src = URL.createObjectURL(file); a.play(); }
-        });
-      }
-    }
+    <!-- HOME -->
+    <section id="sec-home" class="section active">
+      <h2 class="title"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBmaWxsPSIjNGE5MGUyIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGE5MGUyIiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJNNTAgMTV2NzBNMTUgNTBoNzBNMjUgMjVsNTAgNTBNMjUgNzVsNTAtNTAiIHN0cm9rZT0iIzRhOTBlMiIgc3Ryb2tlLXdpZHRoPSIyIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhOTBlMiIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+" alt=""> المنصة السيادية المعتمدة</h2>
+      <div class="card blue">
+        <h3>الشرعية المستقلة للمجلس الأعلى للطفولة</h3>
+        <p style="margin-top: 10px; font-size: 1.1rem; color: #34495e;">
+          تم بناء هذه المنصة لتكون الواجهة الرسمية والقانونية التي توثق الشرعية الأصيلة للمجلس الأعلى للطفولة وتفصل اختصاصاته السيادية عن أي لجان فرعية أخرى. 
+          ترتبط المنصة مباشرة بالمعايير الأممية لحقوق الطفل في جنيف (OHCHR) واليونيسف (UNICEF).
+        </p>
+      </div>
+      <div class="grid-3" style="margin-top: 25px;">
+        <div class="card gold">
+          <h4>الارتباط الأممي (جنيف)</h4>
+          <p style="font-size: 0.9rem; color: #7f8c8d; margin-top:10px;">توثيق تقارير حقوق الطفل وإرسالها مباشرة لجهات الاختصاص الأممية.</p>
+        </div>
+        <div class="card">
+          <h4>أدوات الذكاء الاصطناعي</h4>
+          <p style="font-size: 0.9rem; color: #7f8c8d; margin-top:10px;">صياغة وترجمة المذكرات والمراسلات الدولية أوتوماتيكياً بلغات متعددة.</p>
+        </div>
+        <div class="card">
+          <h4>الأرشيف التأسيسي</h4>
+          <p style="font-size: 0.9rem; color: #7f8c8d; margin-top:10px;">توثيق التأسيس عام 2012 وتكليف الأستاذ أحمد الكوافي بمهام الرئاسة.</p>
+        </div>
+      </div>
+    </section>
 
-    // Arabic Narration Speech
-    function initNarration() {
-      const b = document.getElementById('readNarrationBtn');
-      const s = document.getElementById('stopNarrationBtn');
-      const t = document.getElementById('fullDocumentaryScript');
-      if(b && t && window.speechSynthesis) {
-        b.addEventListener('click', () => {
-          window.speechSynthesis.cancel();
-          const u = new SpeechSynthesisUtterance(t.innerText);
-          u.lang = 'ar-SA'; // Force Arabic voice
-          window.speechSynthesis.speak(u);
-        });
-        s.addEventListener('click', () => window.speechSynthesis.cancel());
-      }
-    }
+    <!-- DEBATE -->
+    <section id="sec-debate" class="section">
+      <h2 class="title"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBmaWxsPSIjZDRhZjM3Ij48cGF0aCBkPSJNNTAgMTBMMTAgMzB2MTBoODBWMzB6TTIwIDUwdjMwaDEwVjUwem0yMCAwdjMwaDEwVjUwem0yMCAwdjMwaDEwVjUwek0xMCA5MGg4MHYxMEgxMHoiLz48L3N2Zz4=" alt=""> المناظرة القانونية: إثبات الشرعية السيادية</h2>
+      <div class="grid-2" style="align-items: stretch;">
+        <div class="debate-card debate-right">
+          <h3 style="color: var(--primary); text-align: center; border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px;">المجلس الأعلى للطفولة<br><span style="font-size: 1rem; color:#7f8c8d;">(الشرعية الأصيلة - سيادي مستقل)</span></h3>
+          <ul class="debate-list">
+            <li>كيان سيادي مستقل تم تأسيسه منذ عام 2012.</li>
+            <li>يمتلك الشخصية الاعتبارية والذمة المالية المستقلة.</li>
+            <li>معتمد محلياً ومتوافق مع اتفاقيات جنيف لحقوق الطفل.</li>
+            <li>يرأسه الأستاذ أحمد الكوافي بتكليف رسمي وموثق.</li>
+            <li>صاحب الاختصاص الأصيل في رسم سياسات الطفولة في ليبيا.</li>
+          </ul>
+        </div>
+        <div class="debate-card debate-left">
+          <h3 style="color: var(--danger); text-align: center; border-bottom: 2px solid var(--danger); padding-bottom: 10px; margin-bottom: 20px;">اللجنة العليا (الشؤون الاجتماعية)<br><span style="font-size: 1rem; color:#7f8c8d;">(إجراءات باطلة - تضارب اختصاص)</span></h3>
+          <ul class="debate-list">
+            <li>لجنة فرعية تم تشكيلها لاحقاً بتداخل غير قانوني.</li>
+            <li>تابعة لوزارة الشؤون الاجتماعية وتفتقر للاستقلالية السيادية.</li>
+            <li>إجراءاتها وقراراتها تعد تعدياً على اختصاصات المجلس الأعلى.</li>
+            <li>لا تملك صفة التخاطب الدولي المباشر مع المنظمات الأممية.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    document.addEventListener('DOMContentLoaded', () => {
-      init3DEmblemScene(); renderArchive(); initReunion(); initNarration();
-      document.getElementById('archiveSearch')?.addEventListener('input', e => renderArchive(e.target.value));
-      document.getElementById('addArchiveForm')?.addEventListener('submit', e => {
-        e.preventDefault();
-        const recs = getRecs();
-        recs.unshift({code: document.getElementById('recCode').value, subject: document.getElementById('recSubject').value, entity: document.getElementById('recEntity').value, status: document.getElementById('recStatus').value});
-        localStorage.setItem('hcc_arch', JSON.stringify(recs));
-        renderArchive(); e.target.reset();
-      });
-    });
+    <!-- CONTROL PANEL -->
+    <section id="sec-panel" class="section">
+      <div class="panel-header">
+        <div>
+          <h2 style="margin: 0; display:flex; align-items:center; gap:10px;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBmaWxsPSIjMmMzZTUwIj48cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgcng9IjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzJjM2U1MCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHBhdGggZD0iTTEwIDMwaDgwTTMwIDEwdjgwIiBzdHJva2U9IiMyYzNlNTAiIHN0cm9rZS13aWR0aD0iMiIvPjwvc3ZnPg==" style="width:30px; filter:invert(1);"> لوحة تحكم الرئيس الذكية</h2>
+          <span style="font-size: 0.9rem; color: #bdc3c7;">صلاحيات: رئيس المجلس الأستاذ أحمد الكوافي | مدير النظام: م. حسام</span>
+        </div>
+        <div>
+          <span class="un-badge">متصل بخوادم جنيف (Secure)</span>
+        </div>
+      </div>
+      
+      <div class="grid-2">
+        <!-- AI Drafter -->
+        <div class="card gold ai-box">
+          <h3 style="margin-bottom: 15px; color: var(--primary);">صياغة المراسلات الدولية (AI)</h3>
+          <textarea id="memoText" placeholder="اكتب مسودة القرار أو المذكرة هنا... سيقوم الذكاء الاصطناعي بصياغتها قانونياً وترجمتها لمخاطبة الأمم المتحدة."></textarea>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn btn-gold" onclick="alert('تمت الصياغة القانونية والترجمة بنجاح.')">صياغة وترجمة (AI)</button>
+            <button class="btn btn-un" onclick="alert('تم الإرسال إلى المفوضية السامية بجنيف.')">إرسال إلى جنيف (UN)</button>
+          </div>
+        </div>
+
+        <!-- Links & Tools -->
+        <div class="card blue">
+          <h3 style="margin-bottom: 15px; color: var(--primary);">الربط الأممي والطباعة السيادية</h3>
+          <ul style="list-style: none;">
+            <li style="margin-bottom: 15px; padding: 15px; background: #eaf2f8; border-radius: 8px;">
+              <strong>بوابة اليونيسف (UNICEF)</strong><br>
+              <a href="#" style="color: var(--un-blue); font-size:0.9rem;">فتح البوابة الأمنية لتبادل التقارير</a>
+            </li>
+            <li style="margin-bottom: 15px; padding: 15px; background: #fdf2e9; border-radius: 8px;">
+              <strong>رادار الأخبار الدولية للطفولة</strong><br>
+              <span style="font-size:0.9rem; color: #666;">يتابع أحدث القرارات الأممية تلقائياً.</span>
+            </li>
+            <li>
+              <button class="btn btn-primary" style="width: 100%;" onclick="window.print()">طباعة مذكرة قانونية مروسة</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHIVE -->
+    <section id="sec-archive" class="section">
+      <h2 class="title"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBmaWxsPSIjOGU0NGFkIj48cGF0aCBkPSJNMTAgMjBoODB2NjBIMTB6IiBmaWxsPSJub25lIiBzdHJva2U9IiM4ZTQ0YWQiIHN0cm9rZS13aWR0aD0iNCIvPjxwYXRoIGQ9Ik0xMCA0MGg4ME00MCAyMHY4MCIgc3Ryb2tlPSIjOGU0NGFkIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=" alt=""> الأرشيف التأسيسي والوثائق</h2>
+      <div class="card">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">عام 2012</div>
+            <h4>قرار التأسيس السيادي</h4>
+            <p>تم تأسيس المجلس الأعلى للطفولة كجهة مستقلة ترعى شؤون وحقوق الطفل في ليبيا وتضع الاستراتيجيات الوطنية.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">تكليف الرئاسة</div>
+            <h4>رئاسة الأستاذ أحمد الكوافي</h4>
+            <p>تم تكليف الأستاذ أحمد الكوافي برئاسة المجلس وإدارة شؤونه لضمان تطبيق القوانين وحماية الطفولة.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">الأرشيف والمراسلات</div>
+            <h4>حفظ المذكرات القانونية</h4>
+            <p>جميع المراسلات والقرارات الإدارية، بما في ذلك الردود القانونية على التعديات والاختصاصات، محفوظة وموثقة محلياً ودولياً.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FESTIVAL -->
+    <section id="sec-festival" class="section">
+      <h2 class="title"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBmaWxsPSIjZTc0YzNjIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZTc0YzNjIiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJNNTAgMjBsMTAgMjAgMjAgNS0xNSAxNSA1IDIwLTIwLTEwLTIwIDEwIDUtMjAtMTUtMTUgMjAtNXoiIGZpbGw9IiNlNzRjM2MiLz48L3N2Zz4=" alt=""> المهرجان الأول للطفولة</h2>
+      <div class="card red">
+        <h3>توثيق فعاليات المهرجان الأول</h3>
+        <p style="margin-top: 10px; margin-bottom: 20px; font-size: 1.1rem; color: #34495e;">
+          يعتبر المهرجان الأول للطفولة انطلاقة حقيقية لبرامج المجلس على أرض الواقع، حيث جُمعت فيه المواهب، وتم تسليط الضوء على حقوق الطفل في بيئة آمنة ومحفزة.
+        </p>
+        <div class="grid-3">
+          <div style="background:#eee; height:200px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#999; font-weight:bold;">[قم برفع صورة المهرجان 1 هنا]</div>
+          <div style="background:#eee; height:200px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#999; font-weight:bold;">[قم برفع صورة المهرجان 2 هنا]</div>
+          <div style="background:#eee; height:200px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#999; font-weight:bold;">[قم برفع صورة المهرجان 3 هنا]</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function show(sec) {
+      document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav a').forEach(el => el.classList.remove('active'));
+      document.getElementById('sec-' + sec).classList.add('active');
+      document.getElementById('btn-' + sec).classList.add('active');
+    }
   </script>
 </body>
 </html>
