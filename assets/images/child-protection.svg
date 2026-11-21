@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="600" height="380">
+  <rect width="600" height="380" rx="16" fill="#f3f8f6"/>
+  <path d="M300 60 L395 100 L395 195 C395 258 352 302 300 322 C248 302 205 258 205 195 L205 100 Z" fill="#18685c" opacity="0.14" stroke="#18685c" stroke-width="3"/>
+  <circle cx="300" cy="180" r="44" fill="#18685c"/>
+  <path d="M282 182 L294 194 L320 166" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="300" y="355" font-family="Cairo, Arial, sans-serif" font-size="18" font-weight="bold" fill="#18685c" text-anchor="middle">منظومة الحماية والرعاية الشاملة</text>
+</svg>

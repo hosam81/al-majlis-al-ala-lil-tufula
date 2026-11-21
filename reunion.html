@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>المجلس الأعلى للطفولة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>طرابلس، ليبيا — منظومة الرعاية والحماية والتوثيق المؤسسي</div>
+      <div class="en-title-badge">المجلس الأعلى للطفولة</div>
+    </div>
+  </div>
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-mark">ط</div>
+        <div class="brand-text">
+          <strong>المجلس الأعلى للطفولة</strong>
+          <span>المجلس الأعلى للطفولة</span>
+        </div>
+      </a>
+      <nav aria-label="القائمة الرئيسية">
+        <ul class="nav-links"><li><a href="index.html">الرئيسية</a></li><li><a href="reunion.html" class="active">لم شمل الليبيين</a></li><li><a href="about.html">عن المجلس</a></li><li><a href="documentary.html">الفيلم الوثائقي</a></li><li><a href="gallery.html">معرض الصور</a></li><li><a href="archive.html">الأرشيف والمراسلات</a></li><li><a href="contact.html">التواصل</a></li></ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>لم شمل الليبيين</h2>
+        <p>تبويب مخصص لمقطع أغنية <strong>لم الشمل</strong> ضمن موقع <strong>المجلس الأعلى للطفولة</strong> لتشغيل المقطع صوتياً مباشرة داخل الموقع دون إظهار أي صفحة خارجية.</p>
+      </div>
+
+      <div class="doc-box">
+        <h3 style="color:#0f3d5e; margin-bottom:10px;">مشغل أغنية لم الشمل (تشغيل مباشر بدون صفحات خارجية)</h3>
+        <p style="color:#54667a; margin-bottom:14px;">
+          يمكنك اختيار ملف الأغنية الصوتية مباشرة من جهازك (<code>MP3</code> / <code>WAV</code> / <code>OGG</code>)، أو وضع ملف الأغنية باسم <code>lam-al-shaml.mp3</code> داخل مجلد <code>assets/audio/</code> قبل رفع الموقع على الاستضافة ليعمل تلقائياً لجميع الزوار.
+        </p>
+
+        <div class="audio-panel">
+          <audio id="reunionAudioPlayer" controls preload="metadata" style="width:100%; margin-bottom:14px;">
+            <source src="assets/audio/lam-al-shaml.mp3" type="audio/mpeg" />
+            متصفحك لا يدعم عنصر تشغيل الصوت المباشر.
+          </audio>
+          <div class="btn-group">
+            <button type="button" id="playReunionClipBtn" class="btn btn-primary">تشغيل المقطع</button>
+            <button type="button" id="stopReunionClipBtn" class="btn btn-outline" style="color:#0f3d5e; border-color:#0f3d5e;">إيقاف المقطع</button>
+          </div>
+
+          <div class="form-group" style="margin-top:18px;">
+            <label for="reunionLocalFile">أو اختر ملف الأغنية من اللابتوب للتشغيل الفوري:</label>
+            <input type="file" id="reunionLocalFile" accept="audio/*" />
+          </div>
+
+          <div class="form-group" style="margin-top:14px; margin-bottom:8px;">
+            <label for="reunionDirectAudioUrl">أو أدخل مسار/رابط ملف صوتي مباشر (MP3 / OGG / WAV):</label>
+            <input type="text" id="reunionDirectAudioUrl" placeholder="مثال: assets/audio/lam-al-shaml.mp3" />
+          </div>
+          <button type="button" id="applyReunionAudioBtn" class="btn btn-primary">تعيين المسار في المشغل</button>
+          <div id="reunionAlert" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>المجلس الأعلى للطفولة</h4>
+          <p>بوابة تعريفية وتوثيقية وإدارية تعنى بقضايا الطفولة، وحفظ الأرشيف والمراسلات الإدارية، وسرد الفيلم الوثائقي وعرض الصور وتبويب لم شمل الليبيين في طرابلس وليبيا.</p>
+        </div>
+        <div>
+          <h4>جميع روابط الموقع</h4>
+          <ul style="list-style:none; line-height:2.1;">
+            <li><a href="index.html">الرئيسية (index.html)</a></li>
+            <li><a href="reunion.html">لم شمل الليبيين (reunion.html)</a></li>
+            <li><a href="about.html">عن المجلس (about.html)</a></li>
+            <li><a href="documentary.html">الفيلم الوثائقي (documentary.html)</a></li>
+            <li><a href="gallery.html">معرض الصور (gallery.html)</a></li>
+            <li><a href="archive.html">الأرشيف والمراسلات (archive.html)</a></li>
+            <li><a href="contact.html">التواصل (contact.html)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>بيانات التشغيل والاستضافة</h4>
+          <p>الاسم المعتمد: <strong>المجلس الأعلى للطفولة</strong></p>
+          <p>يفتح الموقع مباشرة لأي زائر دون طلب تسجيل دخول أو حساب جيميل.</p>
+          <p>جاهز للرفع المباشر على Cloudflare Pages أو Vercel أو GitHub Pages.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>جميع الحقوق محفوظة © 2026 — المجلس الأعلى للطفولة</span>
+        <span>إعداد وتطوير البرمجيات: م. حسام جمعة أبوزيد الشبعان</span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

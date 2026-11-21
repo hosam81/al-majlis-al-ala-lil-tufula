@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>المجلس الأعلى للطفولة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>طرابلس، ليبيا — منظومة الرعاية والحماية والتوثيق المؤسسي</div>
+      <div class="en-title-badge">المجلس الأعلى للطفولة</div>
+    </div>
+  </div>
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-mark">ط</div>
+        <div class="brand-text">
+          <strong>المجلس الأعلى للطفولة</strong>
+          <span>المجلس الأعلى للطفولة</span>
+        </div>
+      </a>
+      <nav aria-label="القائمة الرئيسية">
+        <ul class="nav-links"><li><a href="index.html">الرئيسية</a></li><li><a href="reunion.html">لم شمل الليبيين</a></li><li><a href="about.html">عن المجلس</a></li><li><a href="documentary.html">الفيلم الوثائقي</a></li><li><a href="gallery.html">معرض الصور</a></li><li><a href="archive.html" class="active">الأرشيف والمراسلات</a></li><li><a href="contact.html">التواصل</a></li></ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>الأرشيف ومتابعة المراسلات</h2>
+        <p>سجل تفاعلي لإضافة والبحث في أرقام القيد والمراسلات والملفات وحفظها محلياً دون الحاجة لتسجيل حساب أو جيميل.</p>
+      </div>
+      <div class="grid-2" style="margin-bottom:28px;">
+        <div class="form-panel">
+          <h3 style="color:#0f3d5e; margin-bottom:14px;">إضافة قيد أو مراسلة جديدة</h3>
+          <form id="addArchiveForm">
+            <div class="form-group"><label for="recCode">رقم القيد / الإشارة</label><input type="text" id="recCode" placeholder="مثال: HCC-TRP-2026-0135" required /></div>
+            <div class="form-group"><label for="recSubject">موضوع المراسلة أو الملف</label><input type="text" id="recSubject" placeholder="أدخل موضوع المراسلة أو التوثيق" required /></div>
+            <div class="form-group"><label for="recEntity">الجهة أو القسم المعني</label><input type="text" id="recEntity" placeholder="مثال: مكتب المتابعة والأرشيف — طرابلس" required /></div>
+            <div class="form-group"><label for="recDate">التاريخ</label><input type="date" id="recDate" value="2026-11-21" /></div>
+            <div class="form-group"><label for="recStatus">الحالة</label><select id="recStatus"><option value="قيد المتابعة">قيد المتابعة</option><option value="معتمد">معتمد</option></select></div>
+            <button type="submit" class="btn btn-primary">حفظ في السجل</button>
+            <div id="archiveAlert" style="display:none;"></div>
+          </form>
+        </div>
+        <div class="form-panel">
+          <h3 style="color:#0f3d5e; margin-bottom:14px;">البحث في السجلات المحفوظة</h3>
+          <div class="form-group"><label for="archiveSearch">ابحث برقم القيد، الموضوع، الجهة، أو الحالة</label><input type="text" id="archiveSearch" placeholder="اكتب كلمة للبحث الفوري..." /></div>
+          <p style="color:#54667a; font-size:0.92rem;">تُحفظ السجلات تلقائياً في المتصفح وتعمل مباشرة فور فتح الرابط دون أي تسجيل دخول.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>رقم القيد</th><th>الموضوع</th><th>الجهة / القسم</th><th>التاريخ</th><th>الحالة</th></tr></thead>
+          <tbody id="archiveTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>المجلس الأعلى للطفولة</h4>
+          <p>بوابة تعريفية وتوثيقية وإدارية تعنى بقضايا الطفولة، وحفظ الأرشيف والمراسلات الإدارية، وسرد الفيلم الوثائقي وعرض الصور وتبويب لم شمل الليبيين في طرابلس وليبيا.</p>
+        </div>
+        <div>
+          <h4>جميع روابط الموقع</h4>
+          <ul style="list-style:none; line-height:2.1;">
+            <li><a href="index.html">الرئيسية (index.html)</a></li>
+            <li><a href="reunion.html">لم شمل الليبيين (reunion.html)</a></li>
+            <li><a href="about.html">عن المجلس (about.html)</a></li>
+            <li><a href="documentary.html">الفيلم الوثائقي (documentary.html)</a></li>
+            <li><a href="gallery.html">معرض الصور (gallery.html)</a></li>
+            <li><a href="archive.html">الأرشيف والمراسلات (archive.html)</a></li>
+            <li><a href="contact.html">التواصل (contact.html)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>بيانات التشغيل والاستضافة</h4>
+          <p>الاسم المعتمد: <strong>المجلس الأعلى للطفولة</strong></p>
+          <p>يفتح الموقع مباشرة لأي زائر دون طلب تسجيل دخول أو حساب جيميل.</p>
+          <p>جاهز للرفع المباشر على Cloudflare Pages أو Vercel أو GitHub Pages.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>جميع الحقوق محفوظة © 2026 — المجلس الأعلى للطفولة</span>
+        <span>إعداد وتطوير البرمجيات: م. حسام جمعة أبوزيد الشبعان</span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

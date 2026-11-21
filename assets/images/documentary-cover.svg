@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="filmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#102538"/>
+      <stop offset="100%" stop-color="#1c4966"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" rx="18" fill="url(#filmGrad)"/>
+  <g fill="#f5b700" opacity="0.85">
+    <rect x="30" y="25" width="22" height="16" rx="3"/>
+    <rect x="70" y="25" width="22" height="16" rx="3"/>
+    <rect x="110" y="25" width="22" height="16" rx="3"/>
+    <rect x="668" y="25" width="22" height="16" rx="3"/>
+    <rect x="708" y="25" width="22" height="16" rx="3"/>
+    <rect x="748" y="25" width="22" height="16" rx="3"/>
+  </g>
+  <circle cx="400" cy="200" r="56" fill="#f5b700" opacity="0.92"/>
+  <polygon points="384,174 384,226 428,200" fill="#102538"/>
+  <text x="400" y="295" font-family="Cairo, Arial, sans-serif" font-size="26" font-weight="bold" fill="#ffffff" text-anchor="middle">فيلم وثائقي: صوت الطفولة وبناء الغد</text>
+  <text x="400" y="332" font-family="Cairo, Arial, sans-serif" font-size="16" fill="#cde4f5" text-anchor="middle">سرد بصري وتوثيقي لمسيرة الرعاية والحماية والتنمية في ليبيا</text>
+</svg>
